@@ -1,0 +1,63 @@
+.heading {
+    position: relative;
+    right: 3rem;
+    text-align: center;
+    animation: changeColors 2s alternate infinite
+}
+
+@keyframes changeColors {
+    0% {color: red;}
+    25% {color: pink;}
+    50% {color: purple;}
+    75% {color: yellow;}
+    100% {color: green;}
+}
+
+.section-Flex-Container {
+    display: flex;
+}
+
+.container {
+    width: 40%;
+    height: 20rem;
+    border: solid black 2px;
+    margin-left: auto;
+}
+
+.container h2 {
+    position: absolute;
+    left: 40%;
+}
+
+hr {
+    position: relative;
+    top: 100px;
+}
+
+form {
+    position: relative;
+    top: 40%;
+    margin-left: 1rem;
+}
+
+#choice-A {
+    position: relative;
+    right: 1px;
+}
+
+#choice-D {
+    position: relative;
+    right: 1px;
+}
+
+input[type="submit"] {
+    position: relative;
+    left: 43%;
+}
+
+#timerContainer {
+    width: 10%;
+    height: 9rem;
+    border: solid black 2px;
+    margin-right: auto;
+}

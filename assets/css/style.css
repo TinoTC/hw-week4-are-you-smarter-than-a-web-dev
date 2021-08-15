@@ -61,3 +61,7 @@ form {
     border: solid black 2px;
     margin-right: auto;
 }
+
+#timerContainer h2 {
+    text-align: center;
+}

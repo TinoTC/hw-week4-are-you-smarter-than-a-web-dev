@@ -35,4 +35,7 @@ function timeRemaining() {
 //Function that prevents the form from posting back and refreshing the page//
 
 submit.addEventListener("click", nextQuestion);
-timeRemaining();
+
+if (confirmation) {
+    timeRemaining();
+}

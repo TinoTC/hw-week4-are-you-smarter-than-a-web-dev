@@ -17,6 +17,19 @@ function nextQuestion(event) {
     event.preventDefault();
 }
 
+//Function that prevents the form from posting back and refreshing the page//
+
+//Array storing cancel messages when confirmations returns false//
+
+var cancellations = [
+    "Self-doubt is your worst enemy, come back when your ready to believe in yourself.",
+    "Success only comes to those who embrace failure.",
+    "To soar past the stars, you must first jump, to play it safe means standing by watching others find happiness.",
+]
+
+//Array storing cancel messages when confirmations returns false//
+
+
 function timeRemaining() {
     var timeLeft = 5;
 
@@ -32,10 +45,12 @@ function timeRemaining() {
 
 }
 
-//Function that prevents the form from posting back and refreshing the page//
-
 submit.addEventListener("click", nextQuestion);
 
 if (confirmation) {
     timeRemaining();
+} else {
+    alert(cancellations[Math.floor(Math.random()*3)]);
+    document.body.style.visibility="hidden";
+    document.getElementById("cancellation-Message").style.visibility="visible";
 }

@@ -1,3 +1,10 @@
+#cancellation-Message {
+    position: relative;
+    top: 300px;
+    left: 475px;
+    visibility: hidden;
+}
+
 .heading {
     position: relative;
     right: 3rem;

@@ -6,6 +6,8 @@ var answerA = document.getElementById("answer-A");
 var answerB = document.getElementById("answer-B");
 var answerC = document.getElementById("answer-C");
 var answerD = document.getElementById("answer-D");
+var answerAValue = document.getElementById("choice-A");
+var answerCValue = document.getElementById("choice-C");
 
 // Create a confirm box and store it in variable
 var confirmation = confirm("You have 1min to complete all 5 questions, timer starts when you click 'OK', GoodLuck!")
@@ -20,7 +22,7 @@ var countDown = setInterval(function() {
 
 //Create an array
 var questions = [
-    "What is the output of the following code?",
+    "What does the acronym 'API' stand for?",
     "Which example best describes a callback function?",
     "What is an object?",
     "Test01",
@@ -33,10 +35,24 @@ if(confirmation) {
     // Populate the answers for first question
 
 if (questionPrompt.textContent === questions[0]) {
-    answerA.textContent = "This is answer A for prompt 1";
-    answerB.textContent = "This is answer B for prompt 1";
-    answerC.textContent = "This is answer C for prompt 1";
-    answerD.textContent = "This is answer D for prompt 1";
+    answerA.textContent = "Application Programming Interweb";
+    answerB.textContent = "Application Procedure Interface";
+    answerC.textContent = "Application Programming Interface";
+    answerD.textContent = "Application Programming Instance";
+    // When user selects an option and clicks next, a function will run a validation
+    function validation(event) {
+        event.preventDefault();
+
+        if (answerCValue.checked) {
+            console.log("CORRECT!");
+        // When a user selects a wrong answer, subtract 10secs on the clock
+        } else {
+            timerCounter -= 10;
+        }
+    }
+    
+    
+    
 }
 // Populate second question
     // When I click the next button, the page should not refresh
@@ -68,6 +84,8 @@ function nextQuestion(event) {
         answerC.textContent = "This is answer C for prompt 5";
         answerD.textContent = "This is answer D for prompt 5";
     }
+    
 }
 
-    next.addEventListener("click", nextQuestion);
+    next.addEventListener("click", validation);
+    //next.addEventListener("click", nextQuestion);

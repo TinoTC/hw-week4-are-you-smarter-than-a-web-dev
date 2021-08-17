@@ -44,7 +44,14 @@ if (questionPrompt.textContent === questions[0]) {
         event.preventDefault();
 
         if (answerCValue.checked) {
-            console.log("CORRECT!");
+        // If user selects correct answer (C), turn border of answer to green
+            answerC.style.border="solid 2px green";
+        // If user selects correct answer (C), display a red border for all incorrect answers
+            answerA.style.border="solid 2px red";
+            answerB.style.border="solid 2px red";
+            answerD.style.border="solid 2px red";
+            // When user clicks next again, send to next question
+
         // When a user selects a wrong answer, subtract 10secs on the clock
         } else {
             timerCounter -= 10;

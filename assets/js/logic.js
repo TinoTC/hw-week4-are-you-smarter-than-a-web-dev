@@ -28,13 +28,46 @@ var questions = [
 ]
     // Populate first question
 if(confirmation) {
-    questionPrompt.textContent = questions[Math.floor(Math.random()*5)];
+    questionPrompt.textContent = questions[0];
 }
     // Populate the answers for first question
+
 if (questionPrompt.textContent === questions[0]) {
     answerA.textContent = "This is answer A for prompt 1";
     answerB.textContent = "This is answer B for prompt 1";
     answerC.textContent = "This is answer C for prompt 1";
-    answerD.textContent = "This is answer D for prompt 1"
+    answerD.textContent = "This is answer D for prompt 1";
 }
-// Populate answers for second question
+// Populate second question
+    // When I click the next button, the page should not refresh
+function nextQuestion(event) {
+    event.preventDefault();
+    // When I click the next button, the answered question should be removed from list
+    questions.shift();
+    // When I click the next button, I should be presented with the next question
+    questionPrompt.textContent = questions[0];
+    // As I am presented with the next question, I should be presented with corresponding answers
+    if (questionPrompt.textContent === 'Which example best describes a callback function?') {
+        answerA.textContent = "This is answer A for prompt 2";
+        answerB.textContent = "This is answer B for prompt 2";
+        answerC.textContent = "This is answer C for prompt 2";
+        answerD.textContent = "This is answer D for prompt 2";
+    } else if (questionPrompt.textContent === 'What is an object?') {
+        answerA.textContent = "This is answer A for prompt 3";
+        answerB.textContent = "This is answer B for prompt 3";
+        answerC.textContent = "This is answer C for prompt 3";
+        answerD.textContent = "This is answer D for prompt 3";
+    } else if (questionPrompt.textContent === 'Test01') {
+        answerA.textContent = "This is answer A for prompt 4";
+        answerB.textContent = "This is answer B for prompt 4";
+        answerC.textContent = "This is answer C for prompt 4";
+        answerD.textContent = "This is answer D for prompt 4";
+    } else if (questionPrompt.textContent === 'Test02') {
+        answerA.textContent = "This is answer A for prompt 5";
+        answerB.textContent = "This is answer B for prompt 5";
+        answerC.textContent = "This is answer C for prompt 5";
+        answerD.textContent = "This is answer D for prompt 5";
+    }
+}
+
+    next.addEventListener("click", nextQuestion);

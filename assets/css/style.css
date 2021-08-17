@@ -36,6 +36,12 @@
     left: 40%;
 }
 
+#question-prompt {
+    position: relative;
+    top: 40px;
+    right: 225px;
+}
+
 hr {
     position: relative;
     top: 100px;

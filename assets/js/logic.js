@@ -1,56 +1,35 @@
-//Storing DOM elements inside javascript variables for handling events//
-
-var submit = document.getElementById("next");
+// Get a handle on html elements
+var next = document.getElementById("next");
 var printedCountdown = document.getElementById("timer");
+var questionPrompt = document.getElementById("question-prompt");
+var answerA = document.getElementById("answer-A");
 
-//Storing DOM elements inside javascript variables for handling events//
+// Create a confirm box and store it in variable
+var confirmation = confirm("You have 1min to complete all 5 questions, timer starts when you click 'OK', GoodLuck!")
 
-//Alert that's stored inside a variable and starts timer when confirm returns true//
+// start timer
+var timerCounter = 60;
+var countDown = setInterval(function() {
+    printedCountdown.textContent = timerCounter;
+    timerCounter--;
+    // if timer equals 0, stop timer.
+},1000);
 
-var confirmation = confirm("You have 10mins to complete all 20 questions, timer starts when you click 'OK', GoodLuck!")
-
-//Alert that's stored inside a variable and starts timer when confirm returns true//
-
-//Function that prevents the form from posting back and refreshing the page//
-
-function nextQuestion(event) {
-    event.preventDefault();
-}
-
-//Function that prevents the form from posting back and refreshing the page//
-
-//Array storing cancel messages when confirmations returns false//
-
-var cancellations = [
-    "Self-doubt is your worst enemy, come back when your ready to believe in yourself.",
-    "Success only comes to those who embrace failure.",
-    "To soar past the stars, you must first jump, to play it safe means standing by watching others find happiness.",
+//Create an array
+var questions = [
+    "What is the output of the following code?",
+    "Which example best describes a callback function?",
+    "What is an object?",
+    "Test01",
+    "Test02"
 ]
-
-//Array storing cancel messages when confirmations returns false//
-
-
-function timeRemaining() {
-    var timeLeft = 5;
-
-    var timer = setInterval(function() {
-        printedCountdown.textContent = timeLeft;
-        timeLeft--;
-        if (timeLeft < 0) {
-            clearInterval(timer);
-            // FAILURE Message //
-        }
-
-    }, 1000)
-
+    // Populate first question
+if(confirmation) {
+    questionPrompt.textContent = questions[Math.floor(Math.random()*3)];
 }
-
-submit.addEventListener("click", nextQuestion);
-
-if (confirmation) {
-    timeRemaining();
-} else {
-    alert(cancellations[Math.floor(Math.random()*3)]);
-    document.body.style.visibility="hidden";
-    document.getElementById("cancellation-Message").style.visibility="visible";
+// Populate the answers for first question
+switch(questions[0]) {
+    case "What is the output of the following code?": 
+    break;
+    default: console.log("idk");
 }

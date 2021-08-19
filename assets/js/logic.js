@@ -7,7 +7,9 @@ var answerB = document.getElementById("answer-B");
 var answerC = document.getElementById("answer-C");
 var answerD = document.getElementById("answer-D");
 var answerAValue = document.getElementById("choice-A");
+var answerBValue = document.getElementById("choice-B");
 var answerCValue = document.getElementById("choice-C");
+var answerDValue = document.getElementById("choice-D");
 
 // Create a confirm box and store it in variable
 var confirmation = confirm("You have 1min to complete all 5 questions, timer starts when you click 'OK', GoodLuck!")
@@ -32,6 +34,10 @@ var questions = [
 if(confirmation) {
     questionPrompt.textContent = questions[0];
 }
+
+    // Create a score variable
+    var score = 0;
+
     // Populate the answers for first question
 
 if (questionPrompt.textContent === questions[0]) {
@@ -43,35 +49,68 @@ if (questionPrompt.textContent === questions[0]) {
     function validation(event) {
         event.preventDefault();
 
+        // If correct answer is chosen for first question, add 20 points to score variable
         if (answerCValue.checked) {
-        // If user selects correct answer (C), turn border of answer to green
-            answerC.style.border="solid 2px green";
-        // If user selects correct answer (C), display a red border for all incorrect answers
-            answerA.style.border="solid 2px red";
-            answerB.style.border="solid 2px red";
-            answerD.style.border="solid 2px red";
-            // When user clicks next again, send to next question
+            score += 20;
+        // If correct answer is chosen, proceed to next question
+            nextQuestion();
+            console.log(score);
 
         // When a user selects a wrong answer, subtract 10secs on the clock
         } else {
             timerCounter -= 10;
+        // If answer is incorrect, take 10 points from total points accumulated
+        // If points are equal to zero, points remain at 0 and don't go negative
+            if (score === 0) {
+                score = 0 
+            } else {
+                score -= 10;
+            }
+        // After answering the question, move to next question
+            nextQuestion();
+            console.log(score);
+        }
+
+        // Populate question 2
+        
+        // If correct answer (A) is chosen for second question, add 20 points and move to next question
+        if (answerAValue.checked) {
+            score += 20;
+            nextQuestion();
+            console.log(score);
+        } else {
+        // When a user selects a wrong answer, subtract 10secs on the clock
+        timerCounter -= 10;
+        // If answer is incorrect, take 10 points from total points accumulated
+        // If points are equal to zero, points remain at 0 and don't go negative
+        if (score === 0) {
+            score = 0 
+        } else {
+            score -= 10;
+        }
         }
     }
-    
-    
-    
+    // Run validation to see if answer was correct
+    next.addEventListener('click', validation);
 }
+
 // Populate second question
     // When I click the next button, the page should not refresh
 function nextQuestion(event) {
-    event.preventDefault();
+
+    // When switching to the next question, clear previous answer choice values
+    answerAValue.checked = false;
+    answerBValue.checked = false
+    answerCValue.checked = false
+    answerDValue.checked = false
+    
     // When I click the next button, the answered question should be removed from list
     questions.shift();
     // When I click the next button, I should be presented with the next question
     questionPrompt.textContent = questions[0];
     // As I am presented with the next question, I should be presented with corresponding answers
     if (questionPrompt.textContent === 'Which example best describes a callback function?') {
-        answerA.textContent = "This is answer A for prompt 2";
+        answerA.textContent = "A function that is passed into another function parameter";
         answerB.textContent = "This is answer B for prompt 2";
         answerC.textContent = "This is answer C for prompt 2";
         answerD.textContent = "This is answer D for prompt 2";
@@ -91,8 +130,4 @@ function nextQuestion(event) {
         answerC.textContent = "This is answer C for prompt 5";
         answerD.textContent = "This is answer D for prompt 5";
     }
-    
 }
-
-    next.addEventListener("click", validation);
-    //next.addEventListener("click", nextQuestion);

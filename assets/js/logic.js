@@ -27,8 +27,8 @@ var questions = [
     "What does the acronym 'API' stand for?",
     "Which statement best describes a callback function?",
     "When creating a new element via Javascript, what method must we use add it to the document?",
-    "Test01",
-    "Test02"
+    "If x = 1 & y = 4 & sum = (y%2)x, what would sum output?", // Trick Question
+    "x = 2 / {console.log(X) / What does the code output?"
 ]
     // Populate first question
 if(confirmation) {
@@ -102,6 +102,38 @@ if (questionPrompt.textContent === questions[0]) {
                 nextQuestion();
                 console.log(score); //TESTING SCORE VALUE
             } // Next Question
+        } else if (questions[0] === 'If x = 1 & y = 4 & sum = (y%2)x, what would sum output?' && answerBValue.checked) {
+            score += 20;
+            nextQuestion();
+            console.log(score); //TESTING SCORE VALUE
+        } else if (questions[0] === 'If x = 1 & y = 4 & sum = (y%2)x, what would sum output?' && !answerBValue.checked) {
+            if (score === 0) {
+                score = 0;
+                timerCounter -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } else {
+                score -= 10
+                timerCounter -= 10
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } // Next Question
+        } else if (questions[0] === 'x = 2 / {console.log(X) / What does the code output?' && answerAValue.checked) {
+            score += 20;
+            nextQuestion();
+            console.log(score); //TESTING SCORE VALUE
+        } else if (questions[0] === 'x = 2 / {console.log(X) / What does the code output?' && !answerAValue.checked) {
+            if (score === 0) {
+                score = 0;
+                timerCounter -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } else {
+                score -= 10;
+                timerCounter -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            }
         }
 
     }
@@ -137,13 +169,13 @@ function nextQuestion() {
         answerB.textContent = "add()";
         answerC.textContent = "attach()";
         answerD.textContent = "append()";
-    } else if (questionPrompt.textContent === 'Test01') {
-        answerA.textContent = "This is answer A for prompt 4";
-        answerB.textContent = "This is answer B for prompt 4";
-        answerC.textContent = "This is answer C for prompt 4";
-        answerD.textContent = "This is answer D for prompt 4";
-    } else if (questionPrompt.textContent === 'Test02') {
-        answerA.textContent = "This is answer A for prompt 5";
+    } else if (questionPrompt.textContent === 'If x = 1 & y = 4 & sum = (y%2)x, what would sum output?') {
+        answerA.textContent = "undefined";
+        answerB.textContent = "0";
+        answerC.textContent = "1";
+        answerD.textContent = "5";
+    } else if (questionPrompt.textContent === "x = 2 / {console.log(X) / What does the code output?") {
+        answerA.textContent = "test";
         answerB.textContent = "This is answer B for prompt 5";
         answerC.textContent = "This is answer C for prompt 5";
         answerD.textContent = "This is answer D for prompt 5";

@@ -20,6 +20,12 @@ var countDown = setInterval(function() {
     printedCountdown.textContent = timerCounter;
     timerCounter--;
     // if timer equals 0, stop timer.
+    if (timerCounter < 0) {
+        clearInterval(countDown);
+        alert("This is not the end, study harder and attack it again!");
+        // When user clicks "OK" the quiz should start over
+        location.reload();
+    }
 },1000);
 
 //Create an array
@@ -134,7 +140,7 @@ if (questionPrompt.textContent === questions[0]) {
                 nextQuestion();
                 console.log(score); //TESTING SCORE VALUE
             }
-        }
+        } 
 
     }
     // Run validation to see if answer was correct
@@ -175,9 +181,9 @@ function nextQuestion() {
         answerC.textContent = "1";
         answerD.textContent = "5";
     } else if (questionPrompt.textContent === "x = 2 / {console.log(X) / What does the code output?") {
-        answerA.textContent = "test";
-        answerB.textContent = "This is answer B for prompt 5";
-        answerC.textContent = "This is answer C for prompt 5";
-        answerD.textContent = "This is answer D for prompt 5";
+        answerA.textContent = "2";
+        answerB.textContent = "undefined";
+        answerC.textContent = "2x";
+        answerD.textContent = "2X";
     }
 }

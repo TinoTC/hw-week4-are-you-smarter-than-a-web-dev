@@ -25,8 +25,8 @@ var countDown = setInterval(function() {
 //Create an array
 var questions = [
     "What does the acronym 'API' stand for?",
-    "Which example best describes a callback function?",
-    "What is an object?",
+    "Which statement best describes a callback function?",
+    "When creating a new element via Javascript, what method must we use add it to the document?",
     "Test01",
     "Test02"
 ]
@@ -48,77 +48,95 @@ if (questionPrompt.textContent === questions[0]) {
     // When user selects an option and clicks next, a function will run a validation
     function validation(event) {
         event.preventDefault();
-
-        // If correct answer is chosen for first question, add 20 points to score variable
-        if (answerCValue.checked) {
+        // if the next question is equal to the first array element and the correct value is selected, add 20 points to the score variable
+        if (questions[0] === "What does the acronym 'API' stand for?" && answerCValue.checked) {
             score += 20;
-        // If correct answer is chosen, proceed to next question
             nextQuestion();
-            console.log(score);
-
-        // When a user selects a wrong answer, subtract 10secs on the clock
-        } else {
-            timerCounter -= 10;
-        // If answer is incorrect, take 10 points from total points accumulated
-        // If points are equal to zero, points remain at 0 and don't go negative
+            console.log(score); //TESTING SCORE VALUE
+            // If the incorrect answer is selected, subtract 10 points
+        } else if (questions[0] === "What does the acronym 'API' stand for?" && !answerCValue.checked) {
             if (score === 0) {
-                score = 0 
+                score = 0;
+                 // If the incorrect answer is selected, subtract 10s from the clock
+                timerCounter -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } else {
+                // If the incorrect answer is selected, subtract 10s from the clock
+                timerCounter -= 10;
+                score -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } // Next Question
+        } else if (questions[0] === "Which statement best describes a callback function?" && answerAValue.checked) {
+            score += 20;
+            nextQuestion();
+            console.log(score); //TESTING SCORE VALUE
+        } else if (questions[0] === "Which statement best describes a callback function?" && !answerAValue.checked) {
+            if (score === 0) {
+                 // If the incorrect answer is selected, subtract 10s from the clock
+                score = 0;
+                timerCounter -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } else {
+                 // If the incorrect answer is selected, subtract 10s from the clock
+                timerCounter -= 10;
+                score -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } // Next Question
+        } else if (questions[0] === "When creating a new element via Javascript, what method must we use add it to the document?" && answerDValue.checked) {
+            score += 20;
+            nextQuestion();
+            console.log(score); //TESTING SCORE VALUE
+        } else if (questions[0] === "When creating a new element via Javascript, what method must we use add it to the document?" && !answerDValue.checked) {
+            if (score === 0) {
+                score = 0;
+                timerCounter -= 10;
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
             } else {
                 score -= 10;
-            }
-        // After answering the question, move to next question
-            nextQuestion();
-            console.log(score);
+                timerCounter -= 10
+                nextQuestion();
+                console.log(score); //TESTING SCORE VALUE
+            } // Next Question
         }
 
-        // Populate question 2
-        
-        // If correct answer (A) is chosen for second question, add 20 points and move to next question
-        if (answerAValue.checked) {
-            score += 20;
-            nextQuestion();
-            console.log(score);
-        } else {
-        // When a user selects a wrong answer, subtract 10secs on the clock
-        timerCounter -= 10;
-        // If answer is incorrect, take 10 points from total points accumulated
-        // If points are equal to zero, points remain at 0 and don't go negative
-        if (score === 0) {
-            score = 0 
-        } else {
-            score -= 10;
-        }
-        }
     }
     // Run validation to see if answer was correct
     next.addEventListener('click', validation);
 }
 
-// Populate second question
+////////////////////// Function Definition //////////////////////
+
     // When I click the next button, the page should not refresh
-function nextQuestion(event) {
+function nextQuestion() {
 
     // When switching to the next question, clear previous answer choice values
     answerAValue.checked = false;
-    answerBValue.checked = false
-    answerCValue.checked = false
-    answerDValue.checked = false
+    answerBValue.checked = false;
+    answerCValue.checked = false;
+    answerDValue.checked = false;
     
     // When I click the next button, the answered question should be removed from list
+
     questions.shift();
+
     // When I click the next button, I should be presented with the next question
     questionPrompt.textContent = questions[0];
     // As I am presented with the next question, I should be presented with corresponding answers
-    if (questionPrompt.textContent === 'Which example best describes a callback function?') {
-        answerA.textContent = "A function that is passed into another function parameter";
-        answerB.textContent = "This is answer B for prompt 2";
-        answerC.textContent = "This is answer C for prompt 2";
-        answerD.textContent = "This is answer D for prompt 2";
-    } else if (questionPrompt.textContent === 'What is an object?') {
-        answerA.textContent = "This is answer A for prompt 3";
-        answerB.textContent = "This is answer B for prompt 3";
-        answerC.textContent = "This is answer C for prompt 3";
-        answerD.textContent = "This is answer D for prompt 3";
+    if (questionPrompt.textContent === 'Which statement best describes a callback function?') {
+        answerA.textContent = "A function that is passed as an argument to another function parameter";
+        answerB.textContent = "A function that invokes itself";
+        answerC.textContent = "A function that is executed later in our code";
+        answerD.textContent = "A function that holds no name";
+    } else if (questionPrompt.textContent === 'When creating a new element via Javascript, what method must we use add it to the document?') {
+        answerA.textContent = "group()";
+        answerB.textContent = "add()";
+        answerC.textContent = "attach()";
+        answerD.textContent = "append()";
     } else if (questionPrompt.textContent === 'Test01') {
         answerA.textContent = "This is answer A for prompt 4";
         answerB.textContent = "This is answer B for prompt 4";

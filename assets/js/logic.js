@@ -140,7 +140,14 @@ if (questionPrompt.textContent === questions[0]) {
                 nextQuestion();
                 console.log(score); //TESTING SCORE VALUE
             }
-        } 
+        } // If user completes quiz, display an end screen showing points
+        if (questions.length === 0) {
+            clearInterval(countDown);
+            document.body.style.display="none";
+            document.createElement("div").setAttribute("class", "displayPoints");
+            
+
+        }
 
     }
     // Run validation to see if answer was correct

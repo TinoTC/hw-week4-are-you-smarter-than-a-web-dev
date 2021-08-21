@@ -16,8 +16,9 @@ var endBox = document.getElementById("endBox");
 var header = document.getElementById("h1");
 var scoreContainer = document.getElementById('score-Container');
 var scoreDisplay = document.getElementById("scoreDisplay");
-var submit = document.getElementById("submit");
+var submit = document.getElementById("submitScore");
 var bestScore = document.getElementById("bestScore");
+var bestScorePrintedText = document.getElementById("bestScorePrintedText");
 
 
 // Create a confirm box and store it in variable
@@ -50,7 +51,8 @@ if(confirmation) {
     questionPrompt.textContent = questions[0];
 }
 
-if (bestScore)
+bestScorePrintedText.textContent;
+bestScore.textContent = localStorage.getItem("score");
 
     // Create a score variable
     var score = 0;
@@ -160,9 +162,11 @@ if (questionPrompt.textContent === questions[0]) {
             // Display a box that contains results of quiz
             endBox.style.display="block";
             scoreDisplay.textContent = score;
-            if (submit) {
+            submit.addEventListener('click', function() {
                 localStorage.setItem('score', score);
-            }
+                alert("Score has been recorded");
+                location.reload();
+            })
             
         }
 

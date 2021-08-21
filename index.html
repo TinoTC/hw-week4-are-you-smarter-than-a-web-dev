@@ -11,12 +11,17 @@
     <h1 id="cancellation-Message">REFRESH OR REOPEN THIS PAGE TO TAKE THE QUIZ.</h1> <!--HAVE TO ADD INTO CANCEL CONFIRMATION-->
 
     <header class = "heading">
-        <h1>Web Developer Quiz</h1>
+        <h1>Best Score: <span id="bestScore"></span></h1>
+        <h1 id="h1">Web Developer Quiz</h1>
     </header>
 
     <section class = "section-Flex-Container">
-
-        <div class = "container">
+        <div id="endBox">
+            <h2 id="Results">Results</h2>
+            <h2 id="score-Container">Your Score: <span id="scoreDisplay"></span></h2>
+            <button id="submit">Submit Score</button>
+        </div>
+        <div class = "container" id="overall-Container">
             
             <header>
                 <h2 id="question-heading">Question: <span id="question-prompt"></span></h2>

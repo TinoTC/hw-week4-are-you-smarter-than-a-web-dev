@@ -1,6 +1,7 @@
 // Get a handle on html elements
 var next = document.getElementById("next");
 var printedCountdown = document.getElementById("timer");
+var timerContainer = document.getElementById("timerContainer");
 var questionPrompt = document.getElementById("question-prompt");
 var answerA = document.getElementById("answer-A");
 var answerB = document.getElementById("answer-B");
@@ -10,6 +11,14 @@ var answerAValue = document.getElementById("choice-A");
 var answerBValue = document.getElementById("choice-B");
 var answerCValue = document.getElementById("choice-C");
 var answerDValue = document.getElementById("choice-D");
+var form = document.getElementById("overall-Container");
+var endBox = document.getElementById("endBox");
+var header = document.getElementById("h1");
+var scoreContainer = document.getElementById('score-Container');
+var scoreDisplay = document.getElementById("scoreDisplay");
+var submit = document.getElementById("submit");
+var bestScore = document.getElementById("bestScore");
+
 
 // Create a confirm box and store it in variable
 var confirmation = confirm("You have 1min to complete all 5 questions, timer starts when you click 'OK', GoodLuck!")
@@ -40,6 +49,8 @@ var questions = [
 if(confirmation) {
     questionPrompt.textContent = questions[0];
 }
+
+if (bestScore)
 
     // Create a score variable
     var score = 0;
@@ -140,13 +151,19 @@ if (questionPrompt.textContent === questions[0]) {
                 nextQuestion();
                 console.log(score); //TESTING SCORE VALUE
             }
-        } // If user completes quiz, display an end screen showing points
+        } // If user completes quiz, display a blank screen
         if (questions.length === 0) {
             clearInterval(countDown);
-            document.body.style.display="none";
-            document.createElement("div").setAttribute("class", "displayPoints");
+            form.style.display="none";
+            timerContainer.style.display="none";
+            header.style.display="none";
+            // Display a box that contains results of quiz
+            endBox.style.display="block";
+            scoreDisplay.textContent = score;
+            if (submit) {
+                localStorage.setItem('score', score);
+            }
             
-
         }
 
     }

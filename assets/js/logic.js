@@ -1,3 +1,5 @@
+// CODE IS INCOMPLETE //
+
 // Get a handle on html elements
 var next = document.getElementById("next");
 var printedCountdown = document.getElementById("timer");
@@ -19,6 +21,7 @@ var scoreDisplay = document.getElementById("scoreDisplay");
 var submit = document.getElementById("submitScore");
 var bestScore = document.getElementById("bestScore");
 var bestScorePrintedText = document.getElementById("bestScorePrintedText");
+var initial = document.getElementById("initial");
 
 
 // Create a confirm box and store it in variable
@@ -164,7 +167,7 @@ if (questionPrompt.textContent === questions[0]) {
             scoreDisplay.textContent = score;
             submit.addEventListener('click', function() {
                 localStorage.setItem('score', score);
-                alert("Score has been recorded");
+                alert("Your score has been recorded");
                 location.reload();
             })
             
